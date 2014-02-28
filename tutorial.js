@@ -46,8 +46,8 @@ var Tutorial = function(args) {
 		s.appendChild(t);
 		s.appendChild(o);
 		w.appendChild(b);
-		w.appendChild(s);
 		w.appendChild(i);
+		w.appendChild(s);
 		container.appendChild(w);
 	}
 

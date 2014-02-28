@@ -3,6 +3,11 @@
 	max-width: 960px;
 	margin: 0 auto;
 }
+.tutorialjs-header {
+	font-size: 200%;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
 .tutorialjs-button {
 	background: #69c;
 	color: white;
@@ -17,12 +22,11 @@
 .tutorialjs-hide {
 	display: none;
 }
-.tutorialjs-step {
-	display: inline-block;
-	width: auto;
-}
 .tutorialjs-image {
-	display: inline-block;
-	min-width: 120px;
-	max-width: 400px;
+	float: right;
+	width: 400px;
+	max-width: 100%;
+}
+.tutorialjs-step {
+	padding-right: 420px;
 }
