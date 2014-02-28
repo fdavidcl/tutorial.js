@@ -2,6 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/* tutorial.js
+   Version 0.1 */
+
 var Tutorial = function(args) {
 	// Default option values
 	var container, first, back_button, history;
@@ -79,6 +82,8 @@ var Tutorial = function(args) {
 		container.querySelector(".tutorialjs-text").innerHTML = step.text;
 		container.querySelector(".tutorialjs-image").src = step.image;
 
+		var button_list = container.querySelector(".tutorialjs-options");
+
 		for (o in step.options) {
 			var nbut = document.createElement("a");
 			nbut.className = "tutorialjs-button";
@@ -93,7 +98,10 @@ var Tutorial = function(args) {
 				nbut.href = step.options[o];
 			}
 
-			container.querySelector(".tutorialjs-options").appendChild(nbut)
+			var br = document.createElement("br");
+
+			button_list.appendChild(nbut);
+			button_list.appendChild(br);
 		}
 
 		history.push(url);
