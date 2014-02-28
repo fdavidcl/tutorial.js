@@ -42,8 +42,12 @@ var Tutorial = function(args) {
 		var i = document.createElement("img");
 			i.className = "tutorialjs-image";
 
-		s.appendChild(h).appendChild(t).appendChild(o);
-		w.appendChild(b).appendChild(s).appendChild(i);
+		s.appendChild(h)
+		s.appendChild(t)
+		s.appendChild(o)
+		w.appendChild(b)
+		w.appendChild(s)
+		w.appendChild(i)
 		container.appendChild(w);
 	}
 
