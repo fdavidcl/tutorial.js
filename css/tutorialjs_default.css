@@ -7,6 +7,7 @@
 	font-size: 200%;
 	font-weight: bold;
 	letter-spacing: -1px;
+	display: block;
 }
 .tutorialjs-hide {
 	display: none;
