@@ -83,7 +83,7 @@ var Tutorial = function(args) {
 			var nbut = document.createElement("a");
 			nbut.innerHTML = o;
 
-			if (/[^?#]+\.json/.match(options[o])) {
+			if (step.options[o].test(/[^?#]+\.json/)) {
 				nbut.href = "javascript:;";
 				nbut.onclick = function() {
 					ajax_get(step.url, display);
