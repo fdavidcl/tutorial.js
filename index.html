@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<style>
+			body {
+				background: #eee;
+				font-family: Open Sans, Segoe UI, sans-serif;
+			}
+		</style>
+		<style>
+			.tutorialjs-wrapper {
+				max-width: 960px;
+				margin: 0 auto;
+			}
+			.tutorialjs-button {
+				background: #69c;
+				color: white;
+				padding: 0.3em 0.6em;
+				display: inline-block;
+				font-size: 90%;
+				cursor: pointer;
+			}
+			.tutorialjs-button:hover {
+				opacity: .85;
+			}
+			.tutorialjs-hide {
+				display: none;
+			}
+			.tutorialjs-step {
+				display: inline-block;
+				width: auto;
+			}
+			.tutorialjs-image {
+				display: inline-block;
+				min-width: 120px;
+				max-width: 400px;
+			}
+		</style>
+		<script type="text/javascript" src="tutorial.js"></script>
+		<script type="text/javascript">
+			var tut = new Tutorial({
+				first: "steps/welcome.json",
+				back_button: "Volver"
+			});
+			window.onload = tut.start;
+		</script>
+	</head>
+	<body>
+		<!--div class="tutorialjs-wrapper">
+			<a class="tutorialjs-button tutorialjs-back">Volver</a>
+			<article class="tutorialjs-step">
+				<header class="tutorialjs-header">Título...</header>
+				<div class="tutorialjs-text">Texto</div>
+				<div class="tutorialjs-options">
+					<a class="tutorialjs-button">Opción 1</a>
+					<a class="tutorialjs-button">Otra opción más</a>
+				</div>
+			</article>
+			<img class="tutorialjs-image" src="../002-win-reducirparticion.png" />
+		</div-->
+	</body>
+</html>
