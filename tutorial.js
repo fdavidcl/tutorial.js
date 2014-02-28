@@ -81,15 +81,16 @@ var Tutorial = function(args) {
 
 		for (o in step.options) {
 			var nbut = document.createElement("a");
+			nbut.className = "tutorialjs-button";
 			nbut.innerHTML = o;
 
 			if (/[^?#]+\.json/.test(step.options[o])) {
 				nbut.href = "javascript:;";
 				nbut.onclick = function() {
-					ajax_get(step.url, display);
+					ajax_get(options[o], display);
 				};
 			} else {
-				nbut.href = step.url;
+				nbut.href = options[o];
 			}
 
 			container.querySelector(".tutorialjs-options").appendChild(nbut)
