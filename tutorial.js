@@ -87,10 +87,10 @@ var Tutorial = function(args) {
 			if (/[^?#]+\.json/.test(step.options[o])) {
 				nbut.href = "javascript:;";
 				nbut.onclick = function() {
-					ajax_get(options[o], display);
+					ajax_get(step.options[o], display);
 				};
 			} else {
-				nbut.href = options[o];
+				nbut.href = step.options[o];
 			}
 
 			container.querySelector(".tutorialjs-options").appendChild(nbut)
