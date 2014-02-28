@@ -1,0 +1,28 @@
+
+.tutorialjs-wrapper {
+	max-width: 960px;
+	margin: 0 auto;
+}
+.tutorialjs-button {
+	background: #69c;
+	color: white;
+	padding: 0.3em 0.6em;
+	display: inline-block;
+	font-size: 90%;
+	cursor: pointer;
+}
+.tutorialjs-button:hover {
+	opacity: .85;
+}
+.tutorialjs-hide {
+	display: none;
+}
+.tutorialjs-step {
+	display: inline-block;
+	width: auto;
+}
+.tutorialjs-image {
+	display: inline-block;
+	min-width: 120px;
+	max-width: 400px;
+}
