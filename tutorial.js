@@ -92,8 +92,9 @@ var Tutorial = function(args) {
 
 			if (/[^?#]+\.json/.test(current_url)) {
 				nbut.href = "javascript:;";
+				nbut.setAttribute("data-url", current_url);
 				nbut.onclick = function() {
-					ajax_get(current_url, display); // This doesn't work, of course :S
+					ajax_get(this.getAttribute("data-url"), display); // This doesn't work, of course :S
 				};
 			} else {
 				nbut.href = current_url;
