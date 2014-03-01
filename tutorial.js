@@ -94,6 +94,7 @@ var Tutorial = function(args) {
 				nbut.href = "javascript:;";
 				nbut.setAttribute("data-url", current_url);
 				nbut.onclick = function() {
+					this.classList.addClass("tutorialjs-loading");
 					ajax_get(this.getAttribute("data-url"), display); // This doesn't work, of course :S
 				};
 			} else {
@@ -108,6 +109,8 @@ var Tutorial = function(args) {
 
 		history.push(url);
 		if (history.length > 1) document.querySelector(".tutorialjs-back").classList.removeClass("tutorialjs-hide");
+
+		this.classList.removeClass("tutorialjs-loading");
 	}
 
 	this.start = function() {
