@@ -85,17 +85,18 @@ var Tutorial = function(args) {
 		var button_list = container.querySelector(".tutorialjs-options");
 
 		for (o in step.options) {
+			var current_url = step.options[o];
 			var nbut = document.createElement("a");
 			nbut.className = "tutorialjs-button";
 			nbut.innerHTML = o;
 
-			if (/[^?#]+\.json/.test(step.options[o])) {
+			if (/[^?#]+\.json/.test(current_url)) {
 				nbut.href = "javascript:;";
 				nbut.onclick = function() {
-					ajax_get(step.options[o], display);
+					ajax_get(current_url, display); // This doesn't work, of course :S
 				};
 			} else {
-				nbut.href = step.options[o];
+				nbut.href = current_url;
 			}
 
 			var br = document.createElement("br");
