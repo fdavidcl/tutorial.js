@@ -78,7 +78,7 @@ var Tutorial = function(args) {
 	this.go_back = function() {
 		history.pop(); // Remove current step from history
 		ajax_get(history.pop(), display);
-		if (history.length == 1) document.querySelector(".tutorialjs-back").classList.addClass("tutorialjs-hide");
+		if (history.length == 1) document.querySelector(".tutorialjs-back").classList.add("tutorialjs-hide");
 	}
 
 	var display = function(url, step) {
@@ -115,7 +115,7 @@ var Tutorial = function(args) {
 		}
 
 		history.push(url);
-		if (history.length > 1) document.querySelector(".tutorialjs-back").classList.removeClass("tutorialjs-hide");
+		if (history.length > 1) document.querySelector(".tutorialjs-back").classList.remove("tutorialjs-hide");
 	}
 
 	this.start = function() {
