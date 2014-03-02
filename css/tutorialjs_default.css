@@ -29,7 +29,7 @@
 }
 .tutorialjs-button {
 	background: #69c;
-	border-color: #047;
+	border-left: 0px solid;
 	color: white;
 	padding: 0.3em 0.6em;
 	display: inline-block;
@@ -42,6 +42,7 @@
 	opacity: .85;
 }
 .tutorialjs-button.tutorialjs-loading {
+	border-left: .4em solid transparent;
 	animation: tutorialjs-border 0.5s infinite;
 	-o-animation: tutorialjs-border 0.5s infinite;
 	-moz-animation: tutorialjs-border 0.5s infinite;
@@ -49,18 +50,18 @@
 }
 
 @keyframes tutorialjs-border {
-	0%, 100% { border-width: 0; }
-	50% { border-width: 0 0 0 .4em; }
+	0%, 100% { border-color: transparent; }
+	50% { border-color: #047; }
 }
 @-o-keyframes tutorialjs-border {
-	0%, 100% { border-width: 0; }
-	50% { border-width: 0 0 0 .4em; }
+	0%, 100% { border-color: transparent; }
+	50% { border-color: #047; }
 }
 @-moz-keyframes tutorialjs-border {
-	0%, 100% { border-width: 0; }
-	50% { border-width: 0 0 0 .4em; }
+	0%, 100% { border-color: transparent; }
+	50% { border-color: #047; }
 }
 @-webkit-keyframes tutorialjs-border {
-	0%, 100% { border-width: 0; }
-	50% { border-width: 0 0 0 .4em; }
+	0%, 100% { border-color: transparent; }
+	50% { border-color: #047; }
 }
