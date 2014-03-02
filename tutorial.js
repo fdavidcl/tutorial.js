@@ -5,6 +5,10 @@
 /* tutorial.js
    Version 0.1 */
 
+/* TODO
+	Support changing step with location.hash
+	*/
+
 var Tutorial = function(args) {
 	// Default option values
 	var container, first, back_button, history;
@@ -95,7 +99,10 @@ var Tutorial = function(args) {
 				nbut.setAttribute("data-url", current_url);
 				nbut.onclick = function() {
 					this.classList.addClass("tutorialjs-loading");
-					ajax_get(this.getAttribute("data-url"), display); // This doesn't work, of course :S
+					ajax_get(this.getAttribute("data-url"), function(u, s) {
+						display(u, s);
+						this.classList.removeClass("tutorialjs-loading");
+					});
 				};
 			} else {
 				nbut.href = current_url;
@@ -109,8 +116,6 @@ var Tutorial = function(args) {
 
 		history.push(url);
 		if (history.length > 1) document.querySelector(".tutorialjs-back").classList.removeClass("tutorialjs-hide");
-
-		this.classList.removeClass("tutorialjs-loading");
 	}
 
 	this.start = function() {
