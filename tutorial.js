@@ -98,10 +98,10 @@ var Tutorial = function(args) {
 				nbut.href = "javascript:;";
 				nbut.setAttribute("data-url", current_url);
 				nbut.onclick = function() {
-					this.classList.addClass("tutorialjs-loading");
+					this.classList.add("tutorialjs-loading");
 					ajax_get(this.getAttribute("data-url"), function(u, s) {
 						display(u, s);
-						this.classList.removeClass("tutorialjs-loading");
+						this.classList.remove("tutorialjs-loading");
 					});
 				};
 			} else {
