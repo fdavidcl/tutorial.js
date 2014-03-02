@@ -29,9 +29,9 @@
 }
 .tutorialjs-button {
 	background: #69c;
-	border-left: 0px solid;
+	border-left: .4em solid transparent;
 	color: white;
-	padding: 0.3em 0.6em;
+	padding: 0.3em 0.8em 0.3em 0.4em;
 	display: inline-block;
 	font-size: 90%;
 	text-decoration: none;
@@ -42,11 +42,10 @@
 	opacity: .85;
 }
 .tutorialjs-button.tutorialjs-loading {
-	border-left: .4em solid transparent;
-	animation: tutorialjs-border 0.5s infinite;
-	-o-animation: tutorialjs-border 0.5s infinite;
-	-moz-animation: tutorialjs-border 0.5s infinite;
-	-webkit-animation: tutorialjs-border 0.5s infinite;
+	        animation: 0.8s infinite ease-in-out tutorialjs-border;
+	     -o-animation: 0.8s infinite ease-in-out tutorialjs-border;
+	   -moz-animation: 0.8s infinite ease-in-out tutorialjs-border;
+	-webkit-animation: 0.8s infinite ease-in-out tutorialjs-border;
 }
 
 @keyframes tutorialjs-border {
