@@ -41,6 +41,9 @@
 .tutorialjs-button:hover {
 	opacity: .85;
 }
+.tutorialjs-button:active {
+	border-color: #047;
+}
 .tutorialjs-button.tutorialjs-loading {
 	        animation: 0.8s infinite ease-in-out tutorialjs-border;
 	     -o-animation: 0.8s infinite ease-in-out tutorialjs-border;
