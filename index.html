@@ -3,7 +3,6 @@
 	<head>
 		<title>tutorial.js</title>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="css/tutorialjs_default.css" />
 		<style>
 			body {
 				background: #eee;
@@ -27,11 +26,12 @@
 				color: #222;
 			}
 		</style>
+
+		<link rel="stylesheet" href="css/tutorialjs_default.css" />
 		<script type="text/javascript" src="tutorial.js"></script>
 		<script type="text/javascript">
 			var tut = new Tutorial({
-				first: "steps/welcome.json",
-				back_button: "Volver"
+				first: "steps/welcome.json"
 			});
 			window.onload = tut.start;
 		</script>

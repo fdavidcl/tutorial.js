@@ -6,7 +6,7 @@
 	"image": "welcomepic.png",
 
 	"options": {
-		"Learn more": "second.json",
+		"Learn more": "steps/second.json",
 		"Download tutorial.js (v0.1)": "https://github.com/fdavidcl/tutorial.js/raw/master/tutorial.js"
 	}
 }
