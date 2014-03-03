@@ -1,5 +1,5 @@
 {
-	"title": "tutorial.js",
+	"title": "What is tutorial.js?",
 
 	"text": "tutorial.js is a lightweight Javascript library able to create step-by-step tutorials, like this one, using only JSON files. Look at the picture on the right to see how this step looks like in JSON.",
 

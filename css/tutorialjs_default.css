@@ -1,31 +1,27 @@
 
 .tutorialjs-wrapper {
-	max-width: 960px;
+	max-width: 60em;
 	margin: 0 auto;
 }
 .tutorialjs-header {
-	font-size: 200%;
+	font-size: 150%;
 	font-weight: bold;
+	margin: 0 0 0.8em;
 	letter-spacing: -1px;
-	display: block;
-}
-.tutorialjs-hide {
-	display: none !important;
 }
 .tutorialjs-image {
-	float: right;
-	width: 400px;
+	float: right; /** Use float: left; if you want image on the left side **/
+	width: 28em; /** Image width (~400px) - Has to be slightly lower than padding-right in tutorialjs-step **/
 	max-width: 100%;
 }
 .tutorialjs-step {
-	padding-right: 420px;
+	padding-right: 29.2em; /** Use padding-left if you want image on the left side **/
 }
-.tutorialjs-text {
-	margin: 1.2em 0;
-	text-align: right;
+.tutorialjs-text, .tutorialjs-options {
+	text-align: right; /** Use text-align: left; if you want image on the left side **/
 }
 .tutorialjs-options {
-	text-align: right;
+	margin-top: 1.2em;
 }
 .tutorialjs-button {
 	background: #69c;
@@ -37,6 +33,11 @@
 	text-decoration: none;
 	cursor: pointer;
 	margin: 0.3em 0;
+	vertical-align: bottom;
+}
+.tutorialjs-button.tutorialjs-back {
+	margin-right: 0.6em;
+	float: left;
 }
 .tutorialjs-button:hover {
 	opacity: .85;
@@ -44,26 +45,31 @@
 .tutorialjs-button:active {
 	border-color: #047;
 }
+
 .tutorialjs-button.tutorialjs-loading {
 	        animation: 0.8s infinite ease-in-out tutorialjs-border;
 	     -o-animation: 0.8s infinite ease-in-out tutorialjs-border;
+	    -ms-animation: 0.8s infinite ease-in-out tutorialjs-border;
 	   -moz-animation: 0.8s infinite ease-in-out tutorialjs-border;
 	-webkit-animation: 0.8s infinite ease-in-out tutorialjs-border;
 }
-
 @keyframes tutorialjs-border {
-	0%, 100% { border-color: transparent; }
-	50% { border-color: #047; }
+	50% { border-color: transparent; }
+	0%, 100% { border-color: #047; }
 }
 @-o-keyframes tutorialjs-border {
-	0%, 100% { border-color: transparent; }
-	50% { border-color: #047; }
+	50% { border-color: transparent; }
+	0%, 100% { border-color: #047; }
+}
+@-ms-keyframes tutorialjs-border {
+	50% { border-color: transparent; }
+	0%, 100% { border-color: #047; }
 }
 @-moz-keyframes tutorialjs-border {
-	0%, 100% { border-color: transparent; }
-	50% { border-color: #047; }
+	50% { border-color: transparent; }
+	0%, 100% { border-color: #047; }
 }
 @-webkit-keyframes tutorialjs-border {
-	0%, 100% { border-color: transparent; }
-	50% { border-color: #047; }
+	50% { border-color: transparent; }
+	0%, 100% { border-color: #047; }
 }

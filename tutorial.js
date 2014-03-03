@@ -11,13 +11,14 @@
 
 var Tutorial = function(args) {
 	// Default option values
-	var container, first, back_button, history;
+	var container, first, back_button, history, enable_back;
 
 	var set_vars = function() {
 		container = document.querySelector(".tutorialjs") ? document.querySelector(".tutorialjs") : document.querySelector("body");
 		first = "first.json";
 		back_button = "Back";
 		history = [];
+		enable_back = true;
 
 		if (args != null) {
 			if (typeof args == "object") {
@@ -30,17 +31,18 @@ var Tutorial = function(args) {
 		}
 	}
 
+	var go_back = function() {
+		history.pop(); // Remove current step from history
+		ajax_get(history.pop(), display);
+		if (history.length < 2) this.classList.add("tutorialjs-hide");
+	}
+
 	var gen_html = function() {
 		var w = document.createElement("div");
 			w.className = "tutorialjs-wrapper";
-		var b = document.createElement("a");
-			b.className = "tutorialjs-button tutorialjs-back tutorialjs-hide";
-			b.href = "javascript:;";
-			b.textContent = back_button;
-			b.onclick = this.go_back;
 		var s = document.createElement("div");
 			s.className = "tutorialjs-step";
-		var h = document.createElement("header");
+		var h = document.createElement("div");
 			h.className = "tutorialjs-header";
 		var t = document.createElement("div");
 			t.className = "tutorialjs-text";
@@ -51,7 +53,6 @@ var Tutorial = function(args) {
 
 		s.appendChild(t);
 		s.appendChild(o);
-		w.appendChild(b);
 		w.appendChild(h);
 		w.appendChild(i);
 		w.appendChild(s);
@@ -75,18 +76,23 @@ var Tutorial = function(args) {
 		xmlhttp.send();
 	}
 
-	this.go_back = function() {
-		history.pop(); // Remove current step from history
-		ajax_get(history.pop(), display);
-		if (history.length == 1) document.querySelector(".tutorialjs-back").classList.add("tutorialjs-hide");
-	}
-
 	var display = function(url, step) {
 		container.querySelector(".tutorialjs-header").textContent = step.title;
 		container.querySelector(".tutorialjs-text").innerHTML = step.text;
 		container.querySelector(".tutorialjs-image").src = step.image;
 
 		var button_list = container.querySelector(".tutorialjs-options");
+		button_list.innerHTML = ""; // Remove older buttons
+
+		if (history.length > 0 && enable_back) { 
+			var back = document.createElement("a");
+				back.className = "tutorialjs-button tutorialjs-back";
+				back.href = "javascript:;";
+				back.textContent = back_button;
+				back.onclick = go_back;
+
+			button_list.appendChild(back);
+		}
 
 		for (o in step.options) {
 			var current_url = step.options[o];
@@ -98,10 +104,11 @@ var Tutorial = function(args) {
 				nbut.href = "javascript:;";
 				nbut.setAttribute("data-url", current_url);
 				nbut.onclick = function() {
-					this.classList.add("tutorialjs-loading");
+					var b = this;
+					b.classList.add("tutorialjs-loading");
 					ajax_get(this.getAttribute("data-url"), function(u, s) {
 						display(u, s);
-						this.classList.remove("tutorialjs-loading");
+						b.classList.remove("tutorialjs-loading");
 					});
 				};
 			} else {
