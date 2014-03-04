@@ -14,7 +14,7 @@ var Tutorial = function(args) {
 
 	var Hash = function(hasharg) {
 		if (typeof hasharg == "string") {
-			return (location.hash.indexOf("#")==0? location.hash: "#") + ":" + encodeURIComponent(hasharg);
+			return (location.hash.indexOf("#")==0 ? location.hash.split(":")[0] : "#") + ":" + hasharg;
 		} else if (typeof hasharg == "object") {
 			var current = ["", ""];
 			var callbackfunction = hasharg.onchange ? hasharg.onchange : function(a){};
@@ -180,7 +180,7 @@ var Tutorial = function(args) {
 				ajax_get(filename, display);
 			}
 		});
-		if (hash_handler.get() == "") hash_handler.set(first);
+		if (hash_handler.get() == "") hash_handler.set(first); // or location.hash = Hash(first);
 	};
 
 	return this;
