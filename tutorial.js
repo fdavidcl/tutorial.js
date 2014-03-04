@@ -17,15 +17,13 @@ var Tutorial = function(args) {
 			return (location.hash.indexOf("#")==0? location.hash: "#") + ":" + encodeURIComponent(hasharg);
 		} else if (typeof hasharg == "object") {
 			var current = ["", ""];
-			var callbackfunction = hasharg.onchange?hasharg.onchange:function(a){};
+			var callbackfunction = hasharg.onchange ? hasharg.onchange : function(a){};
 
 			var getHashes = function() {
 				var h = location.hash;
 				if (h.indexOf("#") > -1) h = h.replace("#", "");
 				return (h.indexOf(":") > -1) ? h.split(":") : [h, ""];
 			}
-
-			current = getHashes();
 
 			this.get = function() {
 				return current[1];
@@ -47,11 +45,14 @@ var Tutorial = function(args) {
 						location.hash = "#" + newhash[0] + ":" + current[1];	// This launches a new hashchange event but 
 																				// is discarded by this function.
 					}
+				} else if (newhash[0] != current[0]) {
+					current = newhash;
 				}
 			};
 
 			window.addEventListener("hashchange", handleChange);
 			window.addEventListener("load", handleChange);
+			handleChange();
 		}
 
 		return this;
@@ -147,7 +148,7 @@ var Tutorial = function(args) {
 			nbut.innerHTML = o;
 
 			if (/[^?#]+\.json/.test(current_url)) {
-				nbut.href = new Hash(current_url);
+				nbut.href = Hash(current_url);
 				/*nbut.setAttribute("data-url", current_url);
 				nbut.onclick = function() {
 					var b = this;
@@ -179,7 +180,7 @@ var Tutorial = function(args) {
 				ajax_get(filename, display);
 			}
 		});
-		hash_handler.set(first);
+		if (hash_handler.get() == "") hash_handler.set(first);
 	};
 
 	return this;
