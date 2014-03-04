@@ -3,7 +3,7 @@
 
 	"text": "tutorial.js is a lightweight Javascript library able to create step-by-step tutorials, like this one, using only JSON files. Look at the picture on the right to see how this step looks like in JSON.",
 
-	"image": "welcomepic.png",
+	"image": "assets/welcomepic.png",
 
 	"options": {
 		"Learn more": "steps/second.json",

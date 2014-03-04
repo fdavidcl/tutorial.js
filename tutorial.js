@@ -2,14 +2,61 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-/* tutorial.js
+/* tutorial.js - http://fdavidcl.github.io/tutorial.js/
    Version 0.1 */
 
 /* TODO
-	Support changing step with location.hash
+	Support changing step with location.hash [DEVELOPING]
+	Handle back button and the rest of buttons with same function
 	*/
 
 var Tutorial = function(args) {
+
+	var Hash = function(hasharg) {
+		if (typeof hasharg == "string") {
+			return (location.hash.indexOf("#")==0? location.hash: "#") + ":" + encodeURIComponent(hasharg);
+		} else if (typeof hasharg == "object") {
+			var current = ["", ""];
+			var callbackfunction = hasharg.onchange?hasharg.onchange:function(a){};
+
+			var getHashes = function() {
+				var h = location.hash;
+				if (h.indexOf("#") > -1) h = h.replace("#", "");
+				return (h.indexOf(":") > -1) ? h.split(":") : [h, ""];
+			}
+
+			current = getHashes();
+
+			this.get = function() {
+				return current[1];
+			}
+
+			this.set = function(newright) {
+				location.hash = "#" + current[0] + ":" + newright;
+			}
+
+			var handleChange = function() {
+				var newhash = getHashes();
+
+				if (newhash[1] != current[1]) {
+					if (newhash[0] == current[0]) {
+						current = newhash;
+						callbackfunction(current[1]);
+					} else { 
+						current[0] = newhash[0];
+						location.hash = "#" + newhash[0] + ":" + current[1];	// This launches a new hashchange event but 
+																				// is discarded by this function.
+					}
+				}
+			};
+
+			window.addEventListener("hashchange", handleChange);
+			window.addEventListener("load", handleChange);
+		}
+
+		return this;
+	};
+
 	// Default option values
 	var container, first, back_button, history, enable_back;
 
@@ -27,7 +74,7 @@ var Tutorial = function(args) {
 				if (args.back_button) back_button = args.back_button;
 			} else if (typeof args == "string") {
 				first = args;
-			}
+			} // else Throw new Error...
 		}
 	}
 
@@ -69,7 +116,6 @@ var Tutorial = function(args) {
 		xmlhttp.onreadystatechange = function() {
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 				callback(url, JSON.parse(xmlhttp.responseText));
-				//console.log(xmlhttp.responseText);
 			}
 		};
 		xmlhttp.open("GET", url, true);
@@ -101,8 +147,8 @@ var Tutorial = function(args) {
 			nbut.innerHTML = o;
 
 			if (/[^?#]+\.json/.test(current_url)) {
-				nbut.href = "javascript:;";
-				nbut.setAttribute("data-url", current_url);
+				nbut.href = new Hash(current_url);
+				/*nbut.setAttribute("data-url", current_url);
 				nbut.onclick = function() {
 					var b = this;
 					b.classList.add("tutorialjs-loading");
@@ -110,7 +156,7 @@ var Tutorial = function(args) {
 						display(u, s);
 						b.classList.remove("tutorialjs-loading");
 					});
-				};
+				};*/
 			} else {
 				nbut.href = current_url;
 			}
@@ -128,7 +174,13 @@ var Tutorial = function(args) {
 	this.start = function() {
 		set_vars();
 		gen_html();
-		ajax_get(first, display);
+		var hash_handler = new Hash({
+			onchange: function(filename) {
+				ajax_get(filename, display);
+			}
+		});
+		hash_handler.set(first);
 	};
 
+	return this;
 };
