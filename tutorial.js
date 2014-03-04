@@ -5,10 +5,6 @@
 /* tutorial.js - http://fdavidcl.github.io/tutorial.js/
    Version 0.1 */
 
-/* TODO
-	Support changing step with location.hash [DONE!]
-	*/
-
 /**
  * Tutorial prototype
  * usage:
@@ -31,7 +27,7 @@
 var Tutorial = function(args) {
 
 	/**
-	 * Hash prototype 
+	 * Hash prototype (not accesible from outside Tutorial)
 	 */
 	var Hash = function(hasharg) {
 		if (typeof hasharg == "string") {
