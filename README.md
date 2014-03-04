@@ -18,12 +18,12 @@ You can use the default CSS file to give text and buttons some style. Then just 
 
 #### Tutorial prototype
 
-* `var mytut = new Tutorial();` - new object will be created, assuming:
+* `var mytut = new Tutorial();` creates a new object, assuming:
 	- An existing div.tutorialjs (or else the tutorial will be displayed in the body)
 	- First JSON step to load is "first.json" on current directory
 	- No back buttons will be displayed
-* `var mytut = new Tutorial("myfirststep.json");` - will assume everything except the first JSON file.
-* ```javascript
+* `var mytut = new Tutorial("myfirststep.json");` will assume everything except the first JSON file.
+* ```
   var mytut = new Tutorial({
 	  first: "myfirststep.json",
 	  container: document.getElementById("tutorial_container"),
