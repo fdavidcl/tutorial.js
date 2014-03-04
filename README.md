@@ -23,7 +23,7 @@ You can use the default CSS file to give text and buttons some style. Then just 
 	- First JSON step to load is "first.json" on current directory
 	- No back buttons will be displayed
 * `var mytut = new Tutorial("myfirststep.json");` - will assume everything except the first JSON file.
-* ```javascript
+* ```
   var mytut = new Tutorial({
 	  first: "myfirststep.json",
 	  container: document.getElementById("tutorial_container"),
