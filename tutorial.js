@@ -6,12 +6,33 @@
    Version 0.1 */
 
 /* TODO
-	Support changing step with location.hash [DEVELOPING]
-	Handle back button and the rest of buttons with same function
+	Support changing step with location.hash [DONE!]
 	*/
 
+/**
+ * Tutorial prototype
+ * usage:
+ *	* var mytut = new Tutorial(); - new object will be created, assuming:
+ *		- An existing div.tutorialjs (or else the tutorial will be displayed in the body)
+ *		- First JSON step to load is "first.json" on current directory
+ *		- No back buttons will be displayed
+ *
+ *	* var mytut = new Tutorial("myfirststep.json"); - will assume everything except the first JSON file.
+ *
+ *	* var mytut = new Tutorial({
+ *		  first: "myfirststep.json",
+ *		  container: document.getElementById("tutorial_container"),
+ *		  back_button: "Back",
+ *		  enable_back: true
+ *	  }); - all arguments are optional and will be given default values if not provided
+ *
+ *	mytut.start() will generate the HTML code and load the first step of the tutorial
+ */
 var Tutorial = function(args) {
 
+	/**
+	 * Hash prototype 
+	 */
 	var Hash = function(hasharg) {
 		if (typeof hasharg == "string") {
 			return (location.hash.indexOf("#")==0 ? location.hash.split(":")[0] : "#") + ":" + hasharg;
@@ -58,7 +79,6 @@ var Tutorial = function(args) {
 		return this;
 	};
 
-	// Default option values
 	var container, first, back_button, history, enable_back;
 
 	var set_vars = function() {
@@ -66,7 +86,7 @@ var Tutorial = function(args) {
 		first = "first.json";
 		back_button = "Back";
 		history = [];
-		enable_back = true;
+		enable_back = false; // No longer needed: users can use the 'back' button on the browser.
 
 		if (args != null) {
 			if (typeof args == "object") {
@@ -134,9 +154,8 @@ var Tutorial = function(args) {
 		if (history.length > 0 && enable_back) { 
 			var back = document.createElement("a");
 				back.className = "tutorialjs-button tutorialjs-back";
-				back.href = "javascript:;";
+				back.href = Hash(history[history.length - 1]);
 				back.textContent = back_button;
-				back.onclick = go_back;
 
 			button_list.appendChild(back);
 		}
@@ -144,23 +163,9 @@ var Tutorial = function(args) {
 		for (o in step.options) {
 			var current_url = step.options[o];
 			var nbut = document.createElement("a");
-			nbut.className = "tutorialjs-button";
-			nbut.innerHTML = o;
-
-			if (/[^?#]+\.json/.test(current_url)) {
-				nbut.href = Hash(current_url);
-				/*nbut.setAttribute("data-url", current_url);
-				nbut.onclick = function() {
-					var b = this;
-					b.classList.add("tutorialjs-loading");
-					ajax_get(this.getAttribute("data-url"), function(u, s) {
-						display(u, s);
-						b.classList.remove("tutorialjs-loading");
-					});
-				};*/
-			} else {
-				nbut.href = current_url;
-			}
+				nbut.className = "tutorialjs-button";
+				nbut.innerHTML = o;
+				nbut.href = /[^?#]+\.json/.test(current_url) ? Hash(current_url) : current_url;
 
 			var br = document.createElement("br");
 
@@ -169,7 +174,6 @@ var Tutorial = function(args) {
 		}
 
 		history.push(url);
-		if (history.length > 1) document.querySelector(".tutorialjs-back").classList.remove("tutorialjs-hide");
 	}
 
 	this.start = function() {
