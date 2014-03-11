@@ -187,7 +187,7 @@ var Tutorial = function(args) {
 		gen_html();
 		var hash_handler = new Hash({
 			onchange: function(filename) {
-				ajax_get(path + filename, display);
+				ajax_get(path + "/" + filename, display);
 			}
 		});
 		if (hash_handler.get() == "") hash_handler.set(first); // or location.hash = Hash(first);
