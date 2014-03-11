@@ -3,7 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 /* tutorial.js - http://fdavidcl.github.io/tutorial.js/
-   Version 0.1 */
+   Version 0.1.1 */
+
+/*
+	TODO ======================================
+	Option to inject CSS file from script
+	Finish tutorial
+	Add super-simple tutorial, with no HTML/JS knowledge needed
+	Lightbox for pictures?
+*/
 
 /**
  * Tutorial prototype
@@ -75,7 +83,7 @@ var Tutorial = function(args) {
 		return this;
 	};
 
-	var container, first, back_button, history, enable_back;
+	var container, first, back_button, history, enable_back, path;
 
 	var set_vars = function() {
 		container = document.querySelector(".tutorialjs") ? document.querySelector(".tutorialjs") : document.querySelector("body");
@@ -83,12 +91,14 @@ var Tutorial = function(args) {
 		back_button = "Back";
 		history = [];
 		enable_back = false; // No longer needed: users can use the 'back' button on the browser.
+		path = ""; // Current path
 
 		if (args != null) {
 			if (typeof args == "object") {
 				if (args.container) container = args.container;
 				if (args.first) first = args.first;
 				if (args.back_button) back_button = args.back_button;
+				if (args.path) path = args.path;
 			} else if (typeof args == "string") {
 				first = args;
 			} // else Throw new Error...
@@ -177,7 +187,7 @@ var Tutorial = function(args) {
 		gen_html();
 		var hash_handler = new Hash({
 			onchange: function(filename) {
-				ajax_get(filename, display);
+				ajax_get(path + filename, display);
 			}
 		});
 		if (hash_handler.get() == "") hash_handler.set(first); // or location.hash = Hash(first);
