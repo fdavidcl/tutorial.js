@@ -10,16 +10,30 @@
 	letter-spacing: -1px;
 }
 .tutorialjs-image {
-	float: right; /** Use float: left; if you want image on the left side **/
+	float: right;
 	width: 28em; /** Image width (~400px) - Has to be slightly lower than padding-right in tutorialjs-step **/
 	max-width: 100%;
 }
 .tutorialjs-step {
-	padding-right: 29.2em; /** Use padding-left if you want image on the left side **/
+	padding-right: 29.2em;
 }
 .tutorialjs-text, .tutorialjs-options {
-	text-align: right; /** Use text-align: left; if you want image on the left side **/
+	text-align: right;
 }
+
+/************* Left align option ************/
+.tutorialjs-left .tutorialjs-image {
+	float: left;
+}
+.tutorialjs-left .tutorialjs-step {
+	padding-right: 0;
+	padding-left: 29.2em;
+}
+.tutorialjs-left .tutorialjs-text, .tutorialjs-left .tutorialjs-options {
+	text-align: left;
+}
+/************/
+
 .tutorialjs-options {
 	margin-top: 1.2em;
 }
