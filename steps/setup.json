@@ -1,7 +1,7 @@
 {
 	"title": "Setting up tutorial.js",
 
-	"text": "Using tutorial.js is simple. Include it as a script in an HTML file: <pre>&lt;script src=\"https://raw.githubusercontent.com/fdavidcl/tutorial.js/master/tutorial.min.js\" /&gt;</pre>You can use the default CSS file to give text and buttons some style: <pre>&lt;link rel=\"stylesheet\" href=\"https://raw.githubusercontent.com/fdavidcl/tutorial.js/gh-pages/css/tutorialjs_default.css\" /&gt;</pre> Then just compose as many JSON files as you want, each one containing a 'step' of the tutorial, with this structure: <pre>{<br />\"title\": \"My first tutorial\",<br />\"text\": \"This will be the content\",<br />\"image\": \"someimage.jpg\",<br />\"options\": {<br />   \"Next\": \"nextstep.json\"<br />}</pre>",
+	"text": "Using tutorial.js is simple. Include it as a script in an HTML file: <pre>&lt;script src=\"https://raw.githubusercontent.com/fdavidcl/tutorial.js/master/tutorial.min.js\" /&gt;</pre>You can use the default CSS file to give text and buttons some style: <pre>&lt;link rel=\"stylesheet\" href=\"https://raw.githubusercontent.com/fdavidcl/tutorial.js/gh-pages/css/tutorialjs_default.css\" /&gt;</pre> Then just compose as many JSON files as you want, each one containing a 'step' of the tutorial, with this structure: <pre>{<br />   \"title\": \"My first tutorial\",<br />   \"text\": \"This will be the content\",<br />   \"image\": \"someimage.jpg\",<br />   \"options\": {<br />      \"Next\": \"nextstep.json\"<br />   }<br />}</pre>",
 
 	"image": "assets/simplesetup.png",
 
