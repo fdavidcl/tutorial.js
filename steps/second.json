@@ -6,7 +6,7 @@
 	"image": "assets/simplesetup.png",
 
 	"options": {
-		"More details": "steps/second.json",
+		"More details": "second.json",
 		"Download tutorial.js (v0.1)": "https://github.com/fdavidcl/tutorial.js/raw/master/tutorial.js"
 	}
 }
