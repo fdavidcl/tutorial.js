@@ -91,7 +91,7 @@ var Tutorial = function(args) {
 		back_button = "Back";
 		history = [];
 		enable_back = false; // No longer needed: users can use the 'back' button on the browser.
-		path = ""; // Current path
+		path = "./"; // Current path
 
 		if (args != null) {
 			if (typeof args == "object") {
