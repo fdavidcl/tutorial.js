@@ -5,7 +5,7 @@
 
 ### Usage
 
-Use this guide or follow [this tutorial](http://fdavidcl.github.io/tutorial.js/#:steps/second.json).
+Use this guide or follow [this tutorial](http://fdavidcl.github.io/tutorial.js/#:setup.json).
 
 #### Setup
 
