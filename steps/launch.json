@@ -1,0 +1,12 @@
+{
+	"title": "Launching tutorial.js",
+
+	"text": "To initialize tutorial.js, add this HTML code where you want to place the tutorial (maybe after a header and before a footer):<pre>&lt;div class=\"tutorialjs\"&gt;&lt;/div&gt;</pre>Now add a script to start the tutorial. Add this before the <code>&lt;/body&gt;</code> tag: <pre>&lt;script&gt;<br />var mytutorial = new Tutorial(\"first_step.json\");<br />mytutorial.start();&lt;/script&gt;</pre>You can also launch tutorial.js with and event, for instance with <code>window.onload = mytutorial.start;</code>.<p><strong>Note:</strong> Remember to place the JSON files on the same directory of your HTML page. Otherwise, you'll need to use the <code>path</code> parameter on tutorial.js to indicate the path of all files.</p><p><strong>Note:</strong> If you use the default CSS file, pictures will be shown on the right side. Add <strong><code>tutorialjs-left</code></strong> if you want them to appear on the left.</p>",
+
+	"image": "assets/simplesetup.png",
+
+	"options": {
+		"Next: More options": "options.json",
+		"Download tutorial.js (v0.1)": "https://github.com/fdavidcl/tutorial.js/raw/master/tutorial.js"
+	}
+}
