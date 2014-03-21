@@ -1,0 +1,12 @@
+{
+	"title": "More options",
+
+	"text": "If you followed this tutorial you can already build complete and helpful tutorials with tutorial.js. But if you want, you can customize the behavior of tutorial.js via parameter options. These are specified in the <code>new Tutorial()</code> call, like in the picture. Currently tutorial.js accepts 5 options:<ul><li><code>container</code>: the DOM element where the tutorial will be placed. Defaults to the first element with class <code>tutorialjs</code>.</li><li><code>path</code>: the URL to the folder where JSON files are contained. It can be a relative or absolute path. Defaults to <code>\"./\"</code></li><li><code>first</code>: the name of the first JSON file to load. Defaults to <code>\"first.json\"</code></li><li><code>enable_back</code>: creates a <em>back</em> button that allows to see previous steps of the tutorial (users can also achieve this with the back button on their browser). Defaults to <code>false</code></li><li><code>back_button</code>: text of the back button. Defaults to <code>\"Back\"</code></li></ul>",
+
+	"image": "assets/customoptions.png",
+
+	"options": {
+		"Start over": "welcome.json",
+		"Download tutorial.js (v0.1)": "https://github.com/fdavidcl/tutorial.js/raw/master/tutorial.js"
+	}
+}
