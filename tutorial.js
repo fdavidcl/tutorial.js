@@ -31,6 +31,7 @@
  *	  }); - all arguments are optional and will be given default values if not provided
  *
  *	mytut.start() will generate the HTML code and load the first step of the tutorial
+ * Esto es otro comentario distinto!!!!
  */
 var Tutorial = function(args) {
 
